@@ -1,0 +1,51 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    encoding:
+      charset: utf-8
+      enabled: true
+    
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+      
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/photogram?serverTimezone=Asia/Seoul
+    username: cos
+    password: cos1234
+    
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update      #create : db초기화 , update : 추가 , none : 아무것도 하지 않는다(서비스단)
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+      
+  servlet:    
+    multipart:
+      enabled: true
+      max-file-size: 2MB    #multipart 타입의 파일을 받는 것을 허용하고, 최대 크기를 2MB 로 제한하겠다. 
+
+  security:
+    user:
+      name: test
+      password: 1234   
+      
+    oauth2: 
+      client:
+        registration: 
+          facebook:
+            client-id: 686009969123390
+            client-secret: 72f2b62b6050818814f58c0e97d0570c
+            scope:
+            - public_profile
+            - email
+         
+                      
+file:
+  path: /Users/yoo/Documents/workspace/springboot/upload/  #끝에 '/'붙이기 안붙이면, upload1.jpg 처럼됨.    #C:/workspace/springbootwork/upload/
